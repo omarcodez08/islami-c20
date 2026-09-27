@@ -7,12 +7,14 @@ import 'package:islami_c20/model/sura_model.dart';
 
 class SuraItem extends StatelessWidget {
   SuraModel suraModel;
-  SuraItem(this.suraModel);
+  void Function(SuraModel) onClick;
+  SuraItem(this.suraModel, this.onClick);
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
+        onClick(suraModel);
         Navigator.pushNamed(context, RoutesManager.suraDetailsRouteName,arguments: suraModel);
       },
       child: Row(
